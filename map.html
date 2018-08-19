@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS 498 Project p3</title>
+</head>
+
+<style>
+    .state{
+        fill: none;
+        stroke: #a9a9a9;
+        stroke-width: 1;
+    }
+    .state:hover{
+        fill-opacity:0.5;
+    }
+    #tooltip {
+        position: absolute;
+        text-align: center;
+        padding: 20px;
+        margin: 10px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 1px;
+        border-radius: 2px;
+        pointer-events: none;
+    }
+    #tooltip h4{
+        margin:0;
+        font-size:14px;
+    }
+    #tooltip{
+        background:rgba(0,0,0,0.9);
+        border:1px solid grey;
+        border-radius:5px;
+        font-size:12px;
+        width:auto;
+        padding:4px;
+        color:white;
+        opacity:0;
+    }
+    #tooltip table{
+        table-layout:fixed;
+    }
+    #tooltip tr td{
+        padding:0;
+        margin:0;
+    }
+    #tooltip tr td:nth-child(1){
+        width:50px;
+    }
+    #tooltip tr td:nth-child(2){
+        text-align:center;
+    }
+    .legend {
+        position:absolute;
+        left:20px;
+        top:30px;
+    }
+
+</style>
+<body>
+<a href="index.html"> Go back to the first page</a><br />
+<a href="barchart.html"> Previous: Gun Deaths Rates by States in US.</a> <br/>
+<h2> Details of Casualties by States in US.</h2>
+<h4>Hover over the map for details about each states.</h4>
+
+<div id="tooltip"></div><!-- div to hold tooltip. -->
+<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+<script src="usStates.js"></script> <!-- creates uStates. -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+    function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
+        return "<h4>"+n+"</h4><table>"+
+            "<tr><td>Killed: </td><td>"+(d.low)+"</td></tr>"+
+            "<tr><td>Injured: </td><td>"+(d.high)+"</td></tr>"+
+            "<tr><td>Total: </td><td>"+(d.low + d.high)+"</td></tr>"+
+            "</table>";
+    }
+
+    var sampleData ={};	/* Sample random data. */
+    ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+        "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+        "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+        "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+        "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+        .forEach(function(d){
+            var low=Math.round(1000*Math.random()),
+                high=Math.round(1000*Math.random());
+            sampleData[d]={low:d3.min([low,high]), high:d3.max([low,high]), color:d3.interpolate("#ffffcc", "#800026")(low/1000)};
+        });
+
+    /* draw states on id #statesvg */
+    usStates.draw("#statesvg", sampleData, tooltipHtml);
+
+    d3.select(self.frameElement).style("height", "600px");
+</script>
+<p>Note: some years or some states had missing data, as mentioned in the data source.</p>
+</body>

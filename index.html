@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<script src="http://d3js.org/d3.v4.min.js"></script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS 498 Project p1</title>
+</head>
+<body>
+
+
+<h1> Visualization of Gun Violence in U.S. (2013-2016)</h1>
+<h5>Yantong Zheng (yzheng56)</h5>
+
+<h3> Navigation</h3>
+<a href="#about"> About the visualization </a> <br/>
+<a href="barchart.html"> Death Rates Visualization with Bar Chart </a> <br/>
+<a href="map.html"> Detailed Visualization with U.S. Map</a> <br/>
+
+<img src = "gun.jpg" height = "350"/>
+
+<h2><a name = "about"></a> About the visualization</h2>
+<h4>Goal</h4>
+<p> The goal of this visualization is to explore the percentage/amount of gun violence related victims across states in US.</p>
+
+<h4>Scenes, parameters, triggers and annotations </h4>
+<p> In this example, I try to demonstrate with Martini glass model: first show the introduction(text) as the author-driven content, and then users can choose the paths they want to go next: either the bar chart for comparing the US nationwide death rates statistics, or the US map, to compare the specific locations and number of victims by states.</p>
+<br />
+<p>Users can move back and forth to different scenes(different webpages) by clicking on the Navigation part(on top left). </p>
+<p>For page layout: since the data is categorical(states) and numerical(rates and victims), I present it in bar chart and US map; Axes extends from zero, captures the range of date well. </p>
+<p>For visual consistency: webpage manipulation options are always at the top left; details or notification about the graphs are shown below the graphs. </p>
+
+<p>Parameters include navigation tabs and different types of visualization (graphs).</p>
+<p>Users trigger changes when they go through webpages and move mouse inside/out the graphs. </p>
+<p> If the user hovers the mouse over the graphs, the selected area will show change of color indicating tooltip. Both the bar chart and the map will show specific statistics regarding that state. The tooltip will show the state data for the state closest to the mouse.</p>
+<br />
+<br />
+<br />
+</body>
+</html>
