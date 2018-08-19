@@ -1,4 +1,4 @@
-# this map example is from https://bl.ocks.org/
+// this map example is from https://bl.ocks.org/
 
 (function(){
     var usStatePaths=[
